@@ -30,4 +30,8 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), FlipGridFragment
             contentFragment = fragment
         }
     }
+
+    override fun routeToWebView(webURl: String) {
+        routeToFragment(WebViewFragment.newInstance(webURl))
+    }
 }

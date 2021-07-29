@@ -6,26 +6,27 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import com.home.android.flipgrid.MainActivity
 import com.home.android.flipgrid.R
 import com.home.android.flipgrid.SubmissionDataModel
 
-class ProfileFragment : Fragment(R.layout.fragment_profile) {
+class ProfileFragment : Fragment(R.layout.fragment_profile), ProfileContract.View {
 
     private var tvHeaderText: TextView? = null
     private var tvWebAddress: TextView? = null
     private var tvFirstName: TextView? = null
     private var tvEmailAddress: TextView? = null
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return super.onCreateView(inflater, container, savedInstanceState)
-    }
+    private var presenter: ProfileContract.Presenter? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        if (presenter == null) {
+            presenter = ProfilePresenter()
+        }
+
+        presenter?.onViewAttached(this, activity as MainActivity)
 
         tvHeaderText = view.findViewById(R.id.profile_header)
         tvWebAddress = view.findViewById(R.id.profile_website)
@@ -38,10 +39,18 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     private fun loadProfilePage() {
         arguments?.getParcelable<SubmissionDataModel>(ARG_SUBMISSION)?.apply {
             tvHeaderText?.text = resources.getString(R.string.profile_header, firstName)
-            if (webAddress.isBlank())
+            if (webAddress.isBlank()) {
                 tvWebAddress?.visibility = View.GONE
-            else
-                tvWebAddress?.text = webAddress
+            }
+            else {
+                tvWebAddress?.apply {
+                    text = webAddress
+                    setOnClickListener {
+                        presenter?.onWebSectionClick(webAddress)
+                    }
+                }
+            }
+
 
             if (firstName.isBlank())
                 tvFirstName?.visibility = View.GONE

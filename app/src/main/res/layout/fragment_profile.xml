@@ -37,7 +37,7 @@
 
     <TextView
         android:id="@+id/profile_website"
-        style="@style/BodySection"
+        style="@style/NavigableSection"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
