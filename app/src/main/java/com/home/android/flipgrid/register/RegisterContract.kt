@@ -1,7 +1,6 @@
 package com.home.android.flipgrid.register
 
-import com.home.android.flipgrid.FlipGridFragmentManager
-import com.home.android.flipgrid.SubmissionDataModel
+import com.home.android.flipgrid.bundle.SubmissionDataBundle
 
 interface RegisterContract {
 
@@ -10,12 +9,12 @@ interface RegisterContract {
     }
 
     interface Presenter {
-        fun onViewAttached(view: View, fgFragmentManager: FlipGridFragmentManager)
         fun clear()
-        fun submitButton(submissionDataModel: SubmissionDataModel)
+        fun submitButton(submissionDataBundle: SubmissionDataBundle)
+        fun onViewAttached(view: View, router: Router)
     }
 
     interface Router {
-        fun goToProfilePage(submissionDataModel: SubmissionDataModel)
+        fun goToProfilePage(submissionDataBundle: SubmissionDataBundle)
     }
 }

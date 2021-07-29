@@ -1,17 +1,17 @@
 package com.home.android.flipgrid.register
 
-import com.home.android.flipgrid.FlipGridFragmentManager
-import com.home.android.flipgrid.SubmissionDataModel
-import com.home.android.flipgrid.SubmissionDataModel.Companion.isValid
+import androidx.annotation.RestrictTo
+import com.home.android.flipgrid.bundle.SubmissionDataBundle
+import com.home.android.flipgrid.bundle.SubmissionDataBundle.Companion.isValid
 
 class RegisterPresenter: RegisterContract.Presenter {
 
     private var view: RegisterContract.View? = null
     private var router: RegisterContract.Router? = null
 
-    override fun submitButton(submissionDataModel: SubmissionDataModel) {
-        if (submissionDataModel.isValid()) {
-            router?.goToProfilePage(submissionDataModel)
+    override fun submitButton(submissionDataBundle: SubmissionDataBundle) {
+        if (submissionDataBundle.isValid()) {
+            router?.goToProfilePage(submissionDataBundle)
         } else {
             view?.showError()
         }
@@ -19,14 +19,22 @@ class RegisterPresenter: RegisterContract.Presenter {
 
     override fun onViewAttached(
         view: RegisterContract.View,
-        fgFragmentManager: FlipGridFragmentManager
+        router: RegisterContract.Router
     ) {
         this.view = view
-        this.router = RegisterRouter(fgFragmentManager)
+        this.router = router
     }
 
     override fun clear() {
         view = null
         router = null
     }
+
+    @RestrictTo(RestrictTo.Scope.TESTS)
+    fun getView() = view
+
+
+    @RestrictTo(RestrictTo.Scope.TESTS)
+    fun getRouter() = router
+
 }

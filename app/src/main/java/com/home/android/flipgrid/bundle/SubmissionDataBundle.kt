@@ -1,10 +1,10 @@
-package com.home.android.flipgrid
+package com.home.android.flipgrid.bundle
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class SubmissionDataModel(
+data class SubmissionDataBundle(
     val firstName: String,
     val emailAddress: String,
     val password: String,
@@ -12,7 +12,7 @@ data class SubmissionDataModel(
 ): Parcelable {
 
     companion object {
-        fun SubmissionDataModel.isValid(): Boolean {
+        fun SubmissionDataBundle.isValid(): Boolean {
             if (emailAddress.isBlank() || password.isBlank())
                 return false
             return true

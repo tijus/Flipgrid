@@ -9,10 +9,10 @@ class ProfilePresenter: ProfileContract.Presenter {
 
     override fun onViewAttached(
         view: ProfileContract.View,
-        fragmentManager: FlipGridFragmentManager
+        router: ProfileContract.Router
     ) {
         this.view = view
-        router = ProfileRouter(fragmentManager)
+        this.router = router
     }
 
     override fun onWebSectionClick(webUrl: String) {

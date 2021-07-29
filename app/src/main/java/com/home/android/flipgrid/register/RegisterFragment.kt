@@ -5,13 +5,11 @@ import android.text.Editable
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
-import androidx.core.content.res.TypedArrayUtils.getText
 import androidx.fragment.app.Fragment
-import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.home.android.flipgrid.MainActivity
 import com.home.android.flipgrid.R
-import com.home.android.flipgrid.SubmissionDataModel
+import com.home.android.flipgrid.bundle.SubmissionDataBundle
 
 
 class RegisterFragment : Fragment(R.layout.fragment_register), RegisterContract.View {
@@ -31,7 +29,7 @@ class RegisterFragment : Fragment(R.layout.fragment_register), RegisterContract.
         if (presenter == null)
             presenter = RegisterPresenter()
 
-        presenter?.onViewAttached(this, activity as MainActivity)
+        presenter?.onViewAttached(this, RegisterRouter(activity as MainActivity))
 
 
         firstNameTextView = view.findViewById(R.id.first_name)
@@ -43,7 +41,7 @@ class RegisterFragment : Fragment(R.layout.fragment_register), RegisterContract.
         submitButton = view.findViewById<Button>(R.id.submit_button).apply {
             setOnClickListener {
                 presenter?.submitButton(
-                    SubmissionDataModel(
+                    SubmissionDataBundle(
                         firstNameTextView?.getText().toString(),
                         emailAddressTextView?.getText().toString(),
                         passwordTextView?.getText().toString(),

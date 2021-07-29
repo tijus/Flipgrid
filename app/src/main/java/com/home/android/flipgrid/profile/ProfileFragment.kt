@@ -1,14 +1,12 @@
 package com.home.android.flipgrid.profile
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.home.android.flipgrid.MainActivity
 import com.home.android.flipgrid.R
-import com.home.android.flipgrid.SubmissionDataModel
+import com.home.android.flipgrid.bundle.SubmissionDataBundle
 
 class ProfileFragment : Fragment(R.layout.fragment_profile), ProfileContract.View {
 
@@ -26,7 +24,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), ProfileContract.Vie
             presenter = ProfilePresenter()
         }
 
-        presenter?.onViewAttached(this, activity as MainActivity)
+        presenter?.onViewAttached(this, ProfileRouter(activity as MainActivity))
 
         tvHeaderText = view.findViewById(R.id.profile_header)
         tvWebAddress = view.findViewById(R.id.profile_website)
@@ -37,7 +35,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), ProfileContract.Vie
     }
 
     private fun loadProfilePage() {
-        arguments?.getParcelable<SubmissionDataModel>(ARG_SUBMISSION)?.apply {
+        arguments?.getParcelable<SubmissionDataBundle>(ARG_SUBMISSION)?.apply {
             tvHeaderText?.text = resources.getString(R.string.profile_header, firstName)
             if (webAddress.isBlank()) {
                 tvWebAddress?.visibility = View.GONE
@@ -64,9 +62,9 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), ProfileContract.Vie
 
         private const val ARG_SUBMISSION = "arg_submission"
 
-        fun newInstance(submissionDataModel: SubmissionDataModel) = ProfileFragment().apply {
+        fun newInstance(submissionDataBundle: SubmissionDataBundle) = ProfileFragment().apply {
             arguments= Bundle().apply {
-                putParcelable(ARG_SUBMISSION, submissionDataModel)
+                putParcelable(ARG_SUBMISSION, submissionDataBundle)
             }
         }
     }

@@ -6,7 +6,7 @@ interface ProfileContract {
 
     interface View
     interface Presenter {
-        fun onViewAttached(view: View, fragmentManager: FlipGridFragmentManager)
+        fun onViewAttached(view: View, router: Router)
         fun onWebSectionClick(webUrl: String)
     }
     interface Router {
