@@ -12,6 +12,7 @@
         android:layout_marginTop="@dimen/margin_16dp"
         android:layout_marginStart="@dimen/margin_16dp"
         android:layout_marginEnd="@dimen/margin_16dp"
+        style="@style/TitleSection"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -23,6 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_4dp"
         android:layout_marginEnd="@dimen/margin_16dp"
+        style="@style/BodySection"
         android:layout_marginStart="@dimen/margin_16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,6 +36,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_4dp"
+        style="@style/BodySection"
         android:layout_marginEnd="@dimen/margin_16dp"
         android:layout_marginStart="@dimen/margin_16dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -125,15 +128,19 @@
     <Button
         android:id="@+id/submit_button"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginStart="@dimen/margin_16dp"
         android:layout_marginLeft="@dimen/margin_16dp"
         android:layout_marginEnd="@dimen/margin_16dp"
         android:layout_marginRight="@dimen/margin_16dp"
         android:layout_marginBottom="@dimen/margin_16dp"
         android:text="@string/btn_submit"
+        android:textColor="@color/white"
+        app:backgroundTint="@color/fg_submit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:elevation="@dimen/margin_16dp"
+        style="@style/Widget.MaterialComponents.Button.TextButton"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TitleSection">
+        <item name="android:textSize">@dimen/font_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="BodySection">
+        <item name="android:textSize">@dimen/font_size_body</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <dimen name="font_size">24sp</dimen>
+    <dimen name="font_size_body">16sp</dimen>
+</resources>
