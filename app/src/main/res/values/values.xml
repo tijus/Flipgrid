@@ -10,6 +10,11 @@
         <item name="android:textStyle">normal</item>
     </style>
 
+    <style name="NavigableSection">
+        <item name="android:textSize">@dimen/font_size_body</item>
+        <item name="android:textColor">@color/blue</item>
+    </style>
+
     <dimen name="font_size">24sp</dimen>
     <dimen name="font_size_body">16sp</dimen>
 </resources>

@@ -15,7 +15,12 @@
     <string name="btn_submit"> Submit </string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <!-- Error State-->
+    <string name="error_password">Password field is empty</string>
+    <string name="error_email">Email address is empty</string>
+
     <!-- Text for Profile Page -->
-    <string name="profile_header">Hello, $%s!</string>
+    <string name="profile_header">Hello, %s!</string>
     <string name="profile_subtext">Your super awesome portfolio has been successfully submitted! The details below will be public within your community!</string>
+    <string name="profile_sign_in">Sign In</string>
 </resources>
