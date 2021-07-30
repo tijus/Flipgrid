@@ -3,6 +3,7 @@ package com.home.android.flipgrid
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.commit
 import androidx.fragment.app.commitNow
 import com.home.android.flipgrid.profile.ProfileFragment
 import com.home.android.flipgrid.register.RegisterFragment
@@ -18,14 +19,13 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), FlipGridFragment
     }
 
     override fun routeToFragment(fragment: Fragment) {
-        supportFragmentManager.commitNow(true) {
+        supportFragmentManager.commit {
             setReorderingAllowed(true)
-            /* We only want to register once in a given session,
-            so back press should exit the app once we have already registered */
             if (contentFragment == null) {
                 add(R.id.fragment_container_view, fragment)
             } else {
                 replace(R.id.fragment_container_view, fragment)
+                addToBackStack(null)
             }
             contentFragment = fragment
         }
