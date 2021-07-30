@@ -1,3 +1,26 @@
 <resources>
-    <string name="app_name">FlipGrid</string>
+    <string name="app_name">FlipGridTest</string>
+
+    <string name="header_text">Profile Creation</string>
+    <string name="helper_text">Use this form below to submit your portfolio</string>
+    <string name="required_text">An email and password are required</string>
+
+    <!--Hint Text for Registration page-->
+    <string name="hint_first_name">First Name</string>
+    <string name="hint_email"> Email Address </string>
+    <string name="hint_password"> Password </string>
+    <string name="hint_website"> WebSite </string>
+
+    <!--Button Text for Registration Page-->
+    <string name="btn_submit"> Submit </string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Error State-->
+    <string name="error_password">Password field is empty</string>
+    <string name="error_email">Email address is empty</string>
+
+    <!-- Text for Profile Page -->
+    <string name="profile_header">Hello, %s!</string>
+    <string name="profile_subtext">Your super awesome portfolio has been successfully submitted! The details below will be public within your community!</string>
+    <string name="profile_sign_in">Sign In</string>
 </resources>
